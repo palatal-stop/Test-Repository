@@ -1,0 +1,128 @@
+\documentclass[12pt, oneside]{book}%oneside stops the automatic margins that a book would have to allow for the binding.
+\usepackage{graphicx} % Required for inserting images
+\usepackage{hyperref, parskip, tipa, linguex, multicol, amssymb, amsmath}
+\usepackage[T1]{fontenc} %allows bold small caps. 
+\usepackage{inputenc}%need to load before biblatex
+
+\usepackage[
+    style=apa,
+    backend=biber]{biblatex}
+
+\addbibresource{references.bib}
+
+\setcounter{secnumdepth}{5}%causes subsubsections to be numbered as well as subsections and sections.
+
+\usepackage{textcomp} %allows placement of arrows in text.
+
+\usepackage{cleveref}%allows capitalisation of the first letter of "section" and "table" etc...
+
+\usepackage{placeins}%allows restrictions on where floats can appear with floatbarrier
+\usepackage{flafter}%allows restrictions on where floats can appear
+
+\usepackage{geometry} 
+    \geometry{a4paper,
+    top=30mm,
+    bottom=35mm,
+    left=30mm,
+    right=30mm,} 
+
+\usepackage{changepage} %lets me move tables around on the page
+
+\usepackage{enumitem} %allows for better enumerate lists and environments.
+
+\usepackage{fancyhdr} %allows alterations to the position of page numbers, which is what this next code is doing.
+\fancyhf{}
+\cfoot{\thepage}
+\pagestyle{plain}
+
+\usepackage{tabularx} %allows multi-line text in single cells in the table.
+     
+\usepackage{array} %required to center text in table cells.
+    \newcolumntype{P}[1]{>{\centering\arraybackslash}p{#1}}%this allows me to create columns in tables that have their values centered, rather than left-aligned.
+    
+
+
+\makeatletter
+\setlength{\@fptop}{0pt}
+\setlength{\@fpbot}{0pt plus 1fil}
+\makeatother %this group of code lets me put floats at the top of a page if they're the only things on that page
+
+
+\usepackage{subfiles}
+
+\title{A Phonological Description of Namo and Len:
+    Two undocumented Yam languages of Papua New Guinea.}
+\author{Elliott Gore}
+\date{May, 2023}
+
+%shortcuts for sounds Namo
+\newcommand{\mb}{\textsuperscript{m}b}
+\newcommand{\mbw}{\textsuperscript{m}b{\textipa{\super w}}}
+\newcommand{\nd}{\textsuperscript{n}d}
+\newcommand{\ndh}{\textsuperscript{\textrtailn}{\textrtaild}}
+\newcommand{\rth}{\textipa{\:t}}
+\newcommand{\kpw}{\textipa{\t{kp}\super w}}
+\newcommand{\preng}{\textsuperscript{\textipa{N}}g}
+\newcommand{\ngw}{\textsuperscript{\textipa{N}}g{\textipa{\super w}}}
+\newcommand{\ny}{\textipa{\textltailn}}
+\newcommand{\ndj}{\textsuperscript{n}{\textipa{\t{d\textyogh}}}}
+\newcommand{\nz}{\textipa{\t{nz}}}
+
+%additional shortcuts for Len
+\newcommand{\bw}{\textipa{b\super w}}
+\newcommand{\mw}{\textipa{m\super w}}
+\newcommand{\dzh}{\textipa{\t{d\textyogh}}}
+\newcommand{\gb}{\textipa{\t{gb}}}
+\newcommand{\fw}{{\textipa{F{\super w}}}}
+\newcommand{\mngb}{\textipa{\textsuperscript{\t{mN}}\t{gb}}}
+
+\begin{document}
+
+\include{titlepage}
+
+
+\frontmatter %uses roman numerals for page numbers. Starts numbering from the next section.
+
+\include{Frontmatter/disclaimer}
+
+\include{Frontmatter/ethics}
+
+\include{Frontmatter/abstract}
+
+\include{Frontmatter/acknowledgements}
+
+\tableofcontents
+
+\include{Frontmatter/abbreviations}
+
+\listoffigures
+\addcontentsline{toc}{chapter}{List of Figures}
+
+\listoftables
+\addcontentsline{toc}{chapter}{List of Tables}
+
+
+\mainmatter %uses Arabic numerals for page numbers
+
+
+\chapter{Introduction} \label{intro}
+\subfile{Chapters/introduction}
+
+\chapter{Namo} \label{namo}
+\subfile{Chapters/namo}
+
+\chapter{Len} \label{len}
+\subfile{Chapters/len}
+
+\chapter{Discussion} \label{discussion}
+\subfile{Chapters/discussion}
+
+\chapter{Concluding remarks} \label{conclusion}
+\subfile{Chapters/conclusion}
+
+\chapter*{References}
+
+\addcontentsline{toc}{chapter}{References}
+\printbibliography[heading=none]
+
+\end{document}
